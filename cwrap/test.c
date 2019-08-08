@@ -1,6 +1,11 @@
 #include "cannoy.h"
 #include <stdio.h>
 
+/*
+ * build:
+ *  cc -o test test.c -L. -lcannoy
+ *
+ */
 int main(){
 
 	hannoy idx1;
@@ -8,8 +13,8 @@ int main(){
 	int idary[5], i,n;
 	double disary[5];
 
-  idx1 = NewAnnoyIndexEuclidean(2);
-  printf("new annoy index ok\n");
+	idx1 = NewAnnoyIndexEuclidean(2);
+	printf("new annoy index ok\n");
   
 	vec[0] = 1;
 	vec[1] = 1;
@@ -27,19 +32,19 @@ int main(){
 	vec[1] = -1;
 	AnnoyAddItem(idx1, 3, vec);
 
-  printf("add 4 items\n");
+	printf("add 4 items\n");
 
 	AnnoyBuild(idx1, 1);
 
-  printf("build index with 1 tree\n");
+	printf("build index with 1 tree\n");
 
-  n = AnnoyGetNItems(idx1);
-  printf("idx1 has %d items\n", n);
+	n = AnnoyGetNItems(idx1);
+	printf("idx1 has %d items\n", n);
   
-  for (i=0; i<n; i++){
-    AnnoyGetItem(idx1, i, vec);
-    printf("item[%d] = [%f,%f]\n", i, vec[0], vec[1]);
-  }
+	for (i=0; i<n; i++){
+		AnnoyGetItem(idx1, i, vec);
+		printf("item[%d] = [%f,%f]\n", i, vec[0], vec[1]);
+	}
 	
 	d = AnnoyGetDistance(idx1, 2,1);
 	printf("dis (2,2) to (2,-2): %f\n", d);
