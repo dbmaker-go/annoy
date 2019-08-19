@@ -5,29 +5,29 @@
 
 hannoy NewAnnoyIndexEuclidean(int dimession){
 	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = new AnnoyIndex<int, double, Euclidean, Kiss32Random>(dimession);
-  return (hannoy)t;
+	return (hannoy)t;
 }
 
 void DestroyAnnoyIndex(hannoy h){
-  AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
-  t->unload();
+	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
+	t->unload();
 	delete t;
 }
 
 void AnnoyAddItem(hannoy h, int id, double *vector){
-  AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
+	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
 	t->add_item(id, vector);
-  return;
+	return;
 }
 
 void AnnoyGetItem(hannoy h, int id, double *vector){
 	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
 	t->get_item(id, vector);
-  return;
+	return;
 }
 
 int AnnoyGetNItems(hannoy h){
-  AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
+	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
 	return t->get_n_items();
 }
 
@@ -56,9 +56,9 @@ void AnnoyGetNnsByItem(hannoy h, int id, size_t n, int *idary, double *disary)
 	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
 	std::vector<int> idvec;
 	std::vector<double> disvec;
-  printf("AnnoyGetnnsByItem: before get_nns_by_item\n"); fflush(stdout);
+	//printf("AnnoyGetnnsByItem: before get_nns_by_item\n"); fflush(stdout);
 	t->get_nns_by_item(id, n, (size_t)-1, &idvec, &disvec);
-  printf("AnnoyGetnnsByItem: after get_nns_by_item\n"); fflush(stdout);
+	//printf("AnnoyGetnnsByItem: after get_nns_by_item\n"); fflush(stdout);
 	for(std::vector<int>::iterator id = idvec.begin(); id!=idvec.end(); ++id){
 		*idary++ = *id;
 	}
@@ -72,9 +72,9 @@ void AnnoyGetNnsByVector(hannoy h, const double *given, size_t n, int *idary, do
 	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
 	std::vector<int> idvec;
 	std::vector<double> disvec;
-  printf("AnnoyGetnnsByVector: before get_nns_by_vector: %p\n", t); fflush(stdout);
+	//printf("AnnoyGetnnsByVector: before get_nns_by_vector: %p\n", t); fflush(stdout);
 	t->get_nns_by_vector(given, n, (size_t)-1, &idvec, &disvec);
-  printf("AnnoyGetnnsByVector: after get_nns_by_vector\n"); fflush(stdout);
+	//printf("AnnoyGetnnsByVector: after get_nns_by_vector\n"); fflush(stdout);
 	for(std::vector<int>::iterator id = idvec.begin(); id!=idvec.end(); ++id){
 		*idary++ = *id;
 	}
