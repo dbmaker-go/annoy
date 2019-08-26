@@ -48,7 +48,7 @@ int AnnoyLoad(hannoy h, char *fname){
 
 double AnnoyGetDistance(hannoy h, int i, int j){
 	AnnoyIndex<int, double, Euclidean, Kiss32Random> *t = (AnnoyIndex<int, double, Euclidean, Kiss32Random> *)h;
-	t->get_distance(i,j);
+	return t->get_distance(i,j);
 }
 
 void AnnoyGetNnsByItem(hannoy h, int id, size_t n, int *idary, double *disary)

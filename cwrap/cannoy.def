@@ -1,0 +1,14 @@
+EXPORTS
+NewAnnoyIndexEuclidean @1
+DestroyAnnoyIndex @2
+AnnoyAddItem @3
+AnnoyGetItem @4
+AnnoyGetNItems @5
+AnnoyBuild @6
+AnnoySave @7
+AnnoyLoad @8
+AnnoyGetDistance @9
+AnnoyGetNnsByItem @10
+AnnoyGetNnsByVector @11
+
+
